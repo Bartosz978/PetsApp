@@ -20,7 +20,7 @@ export default function AddAnnouncementScreen() {
   const [selectedImage, setSelectedImage] = useState(null);
 
   // Funkcja do obsługi wyboru zdjęcia
-  /*const pickImage = async () => {
+  const pickImage = async () => {
     const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
     if (!permissionResult.granted) {
@@ -38,7 +38,7 @@ export default function AddAnnouncementScreen() {
     if (!result.canceled) {
       setSelectedImage(result.assets[0].uri);
     }
-  };*/
+  };
 
   // Funkcja obsługująca dodawanie ogłoszenia
   const handleAdd = () => {
@@ -99,9 +99,21 @@ export default function AddAnnouncementScreen() {
       <TouchableOpacity style={styles.addButton} onPress={handleAdd}>
         <Text style={styles.addButtonText}>Dodaj</Text>
       </TouchableOpacity>
+      <TouchableOpacity style={styles.imagePicker} onPress={pickImage}>
+{selectedImage ? (
+  <Image source={{ uri: selectedImage }} style={styles.selectedImage} />
+) : (
+  <Image
+    source={require('./assets/3.jpg')}
+    style={styles.imageIcon}
+  />
+)}
+
+</TouchableOpacity>
     </View>
-  );
-}
+  )
+};
+
 
 // Style
 const styles = StyleSheet.create({
@@ -166,15 +178,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-/*
-<TouchableOpacity style={styles.imagePicker} onPress={pickImage}>
-{selectedImage ? (
-  <Image source={{ uri: selectedImage }} style={styles.selectedImage} />
-) : (
-  <Image
-    source={require('./assets/3.jpg')}
-    style={styles.imageIcon}
-  />
-)}
-
-</TouchableOpacity>*/

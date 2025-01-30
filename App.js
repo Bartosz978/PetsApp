@@ -7,6 +7,7 @@ import MapView, { Marker } from 'react-native-maps';
 import { Menu, Provider } from 'react-native-paper';
 import {LostPetScreen} from './Ogloszenia';
 import AddAnnouncementScreen from './Add_photo';
+import {Messege} from './Messege';
 
 const Stack = createNativeStackNavigator();
 
@@ -198,8 +199,8 @@ const handlePress = (announcement) => {
   }
 >
   <Menu.Item onPress={() => navigation.navigate('Add')} title="Dodaj ogłoszenie" />
-  <Menu.Item onPress={() => navigation.navigate('Add')} title="Inna opcja" />
-  <Menu.Item onPress={() => navigation.navigate('Add')} title="Kolejna opcja" />
+  <Menu.Item onPress={() => navigation.navigate('Message')} title="Wiadomośći" />
+  <Menu.Item onPress={() => navigation.navigate('Add')} title="Ustawienia" />
 </Menu>
       </View>
 
@@ -266,6 +267,7 @@ export default function App() {
           <Stack.Screen name="SecondScreen" component={SecondScreen} options={{ title: 'Drugi Ekran' }} />
           <Stack.Screen name='LostPet' component={LostPetScreen} options={{title: 'Informacje o zwierzaku'}}/>
           <Stack.Screen name='Add' component={AddAnnouncementScreen} options={{title: 'Dodaj ogłoszenie'}}/>
+          <Stack.Screen name ='Message' component={Messege} options={{title: "Wiadomosci"}}/>
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
