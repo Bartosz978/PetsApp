@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Button, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { AddMessage, getMessage ,messages} from './Users';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
 
 export function Messege() {
     const users = [
@@ -10,12 +10,15 @@ export function Messege() {
     ];
 
     const [selectedUserId, setSelectedUserId] = useState(101);
-    const [messages, setMessages] = useState([]);
+    const [messages, setMessages] = useState({});
 
-    // Aktualizujemy wiadomości na zmianę użytkownika
-    useEffect(() => {
-        setMessages(getMessage(selectedUserId));
-    }, [selectedUserId]);
+    function AddMessage(idUser, message) {
+        if (message.trim() === "") return;
+        setMessages(prevMessages => ({
+            ...prevMessages,
+            [idUser]: [...(prevMessages[idUser] || []), message]
+        }));
+    }
 
     return (
         <View style={styles.container}>
@@ -31,31 +34,52 @@ export function Messege() {
                 ))}
             </View>
 
-            {/* Komponent wyświetlający wiadomości dla wybranego użytkownika */}
-            <PrivateMessege userId={selectedUserId} setMessages={setMessages} />
+            <PrivateMessege userId={selectedUserId} messages={messages} onAddMessage={AddMessage} />
         </View>
     );
 }
 
-function PrivateMessege({ userId, setMessages }) {
+function PrivateMessege({ userId, messages, onAddMessage }) {
+    const [inputMessage, setInputMessage] = useState(""); // Przechowuje wpisywany tekst
+
     return (
         <View style={styles.container1}>
-            <Text style={styles.profileText}>Wiadomości dla użytkownika {userId}</Text>
+            <View style={styles.header}>
+                <Text style={styles.profileText}>Wiadomości dla użytkownika {userId}</Text>
+                <TouchableOpacity onPress={() => onAddMessage(userId, `Szybka wiadomość dla ${userId}`)}>
+                    <Icon name="plus-circle" size={24} color="blue" />
+                </TouchableOpacity>
+            </View>
 
-            {getMessage(userId)}
+            {/* Wyświetlanie wiadomości */}
+            <View style={styles.messageContainer}>
+                {messages[userId]?.length > 0 ? (
+                    messages[userId].map((msg, index) => (
+                        <Text key={index} style={styles.messageText}>{msg}</Text>
+                    ))
+                ) : (
+                    <Text style={styles.noMessages}>Brak wiadomości</Text>
+                )}
+            </View>
 
-            <Button 
-                title="Dodaj wiadomość" 
-                onPress={() => {
-                    AddMessage(userId, `Nowa wiadomość dla ${userId}`);
-                    setMessages(getMessage(userId)); // Odświeżenie wiadomości
-                }}
-            />
+            {/* Pole wpisywania i przycisk wysyłania */}
+            <View style={styles.inputContainer}>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Wpisz wiadomość..."
+                    value={inputMessage}
+                    onChangeText={setInputMessage}
+                />
+                <TouchableOpacity onPress={() => {
+                    onAddMessage(userId, inputMessage);
+                    setInputMessage(""); // Czyści pole po wysłaniu
+                }}>
+                    <Icon name="send" size={24} color="blue" />
+                </TouchableOpacity>
+            </View>
         </View>
     );
 }
-
-
 
 const styles = StyleSheet.create({
     container: {
@@ -84,11 +108,43 @@ const styles = StyleSheet.create({
         padding: 10,
         marginBottom: 5
     },
+    header: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 10
+    },
+    messageText: {
+        fontSize: 16,
+        color: '#333',
+    },
+    messageContainer: {
+        flex: 1,
+        marginBottom: 10,
+    },
+    noMessages: {
+        fontSize: 14,
+        color: '#aaa',
+    },
     profileText: {
         fontSize: 20,
-        marginBottom: 10,
         fontWeight: 'bold',
     },
+    inputContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderTopWidth: 1,
+        borderColor: '#ccc',
+        paddingVertical: 10,
+    },
+    input: {
+        flex: 1,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderRadius: 8,
+        padding: 10,
+        marginRight: 10
+    }
 });
 
 export default Messege;
