@@ -64,7 +64,7 @@ export const LostPetScreen = ({ navigation }) => {
         <Button
           title="Profil nadawcy"
           onPress={() => {
-           // navigation.navigate('OwnerProfile', { owner: petData.owner }); // Nawigacja do profilu nadawcy
+          //  navigation.navigate('Sender', 1); // Nawigacja do profilu nadawcy
           }}
           color="#4CAF50" // Zielony przycisk
         />

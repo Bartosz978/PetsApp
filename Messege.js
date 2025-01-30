@@ -46,9 +46,7 @@ function PrivateMessege({ userId, messages, onAddMessage }) {
         <View style={styles.container1}>
             <View style={styles.header}>
                 <Text style={styles.profileText}>Wiadomości dla użytkownika {userId}</Text>
-                <TouchableOpacity onPress={() => onAddMessage(userId, `Szybka wiadomość dla ${userId}`)}>
-                    <Icon name="plus-circle" size={24} color="blue" />
-                </TouchableOpacity>
+              
             </View>
 
             {/* Wyświetlanie wiadomości */}

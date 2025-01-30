@@ -8,6 +8,7 @@ import { Menu, Provider } from 'react-native-paper';
 import {LostPetScreen} from './Ogloszenia';
 import AddAnnouncementScreen from './Add_photo';
 import {Messege} from './Messege';
+import {UserProfile} from './sender';
 
 const Stack = createNativeStackNavigator();
 
