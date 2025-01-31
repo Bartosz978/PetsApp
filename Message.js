@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
-export function Messege() {
+export function Message() {
     const users = [
         { id: 1, name_surname: 'Bartosz Kaczmarczyk', userId: 101 },
         { id: 2, name_surname: 'Mateusz Wozniak', userId: 102 },
@@ -147,4 +147,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Messege;
+export default Message;

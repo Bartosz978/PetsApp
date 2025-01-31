@@ -1,10 +1,13 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, ScrollView, Button } from 'react-native';
 
-export const LostPetScreen = ({ navigation }) => {
+export const LostPetScreen = ({ navigation, route }) => {
   // Przykładowe dane o zaginionym zwierzaku
+
+  const { dogData } = route.params;
+
   const petData = {
-    name: 'Rex',
+    name: dogData.name,
     dateLost: '2023-12-25',
     species: 'Pies',
     color: 'Brązowy',
