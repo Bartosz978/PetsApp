@@ -282,6 +282,7 @@ export default function App() {
           <Stack.Screen name="SignIn" component={SignUpScreen} options={{ title: 'Zarejestruj się' }} />
           <Stack.Screen name="SecondScreen" component={SecondScreen} options={{ title: 'Mapa' }} />
           <Stack.Screen name='LostPet' component={LostPetScreen} options={{ title: 'Informacje o zwierzaku' }} />
+          <Stack.Screen name='Sender' component= {UserProfile} options={{ title: "Wiadomosci" }} />
           <Stack.Screen name='Add' component={AddAnnouncementScreen} options={{ title: 'Dodaj ogłoszenie' }} />
           <Stack.Screen name='Message' component={Message} options={{ title: "Wiadomosci" }} />
         </Stack.Navigator>
