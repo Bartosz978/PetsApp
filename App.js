@@ -7,7 +7,8 @@ import MapView, { Callout, Marker } from 'react-native-maps';
 import { Menu, Provider } from 'react-native-paper';
 import { LostPetScreen } from './Ogloszenia';
 import AddAnnouncementScreen from './Add_photo';
-import Message from './Message';
+import {Messege} from './Messege';
+import {UserProfile} from './sender';
 
 const Stack = createNativeStackNavigator();
 
