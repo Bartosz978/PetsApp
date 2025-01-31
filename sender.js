@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet, FlatList, TouchableOpacity } from 'react
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons';
 
-export default function UserProfile({ route }) {
+export  function UserProfile({ route }) {
     const navigation = useNavigation();
 
     // Dane użytkownika (możesz je pobierać z API)
@@ -47,7 +47,7 @@ export default function UserProfile({ route }) {
             {/* Ikona wiadomości na dole ekranu */}
             <TouchableOpacity
                 style={styles.messageButton}
-                onPress={() => navigation.navigate('Messages', { userId: user.id })}
+                onPress={() => navigation.navigate('Message')}
             >
                 <FontAwesome name="envelope" size={24} color="white" />
                 <Text style={styles.messageButtonText}>Napisz wiadomość</Text>
