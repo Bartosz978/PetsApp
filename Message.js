@@ -1,63 +1,83 @@
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import { FlatList } from 'react-native';
+import { Button } from 'react-native-paper';
+
+const MessageStack = createNativeStackNavigator();
 
 export function Message() {
+    return ( 
+        <MessageStack.Navigator initialRouteName='list'>
+            <MessageStack.Screen name='list' component={MessageUserList} options={{headerShown: false}}/>
+            <MessageStack.Screen name='chat' component={MessageChat} options={({route}) => ({title: route.params.name})}/>
+        </MessageStack.Navigator>
+    );
+}
+
+function MessageUserList({ navigation }) {
     const users = [
-        { id: 1, name_surname: 'Bartosz Kaczmarczyk', userId: 101 },
-        { id: 2, name_surname: 'Mateusz Wozniak', userId: 102 },
-        { id: 3, name_surname: 'Halina Bera', userId: 103 },
+        { id: 101, name_surname: 'Bartosz Kaczmarczyk'},
+        { id: 102, name_surname: 'Mateusz Wozniak'},
+        { id: 103, name_surname: 'Halina Bera'},
     ];
 
-    const [selectedUserId, setSelectedUserId] = useState(101);
-    const [messages, setMessages] = useState({});
+    return (
+        <View style={styles.listContainer}>
+            <FlatList
+                data={users}
+                keyExtractor={item => item.id}
+                renderItem={({item}) => (
+                    <UserListElement item={item} navigation={navigation}/>
+                )}
+                />
+        </View>
+    );
+}
+
+function UserListElement({ item, navigation }) {
+    return (
+        <TouchableOpacity style={styles.userListItem}
+            onPress={() => navigation.navigate('chat', { userData: item, name: item.name_surname })}
+            >
+            <Text style={styles.userListItemText}>{item.name_surname}</Text>
+        </TouchableOpacity>
+    );
+}
+
+function MessageChat({ route }) {
+    const [messages, setMessages] = useState({
+        101: [{id: 0, message: 'Cześć, tutaj Bartosz Kaczmarczyk', isSent: false}],
+        102: [{id: 0, message: 'Cześć, tutaj Mateusz Wozniak', isSent: false}],
+        103: [{id: 0, message: 'Cześć, tutaj Halina Bera', isSent: false}]
+    });
+    const [inputMessage, setInputMessage] = useState(""); // Przechowuje wpisywany tekst
 
     function AddMessage(idUser, message) {
         if (message.trim() === "") return;
         setMessages(prevMessages => ({
             ...prevMessages,
-            [idUser]: [...(prevMessages[idUser] || []), message]
+            [idUser]: [...(prevMessages[idUser] || []), {message: message, isSent: true, id: prevMessages[idUser].length}]
         }));
     }
 
-    return (
-        <View style={styles.container}>
-            <View style={styles.container1}>
-                {users.map((user) => (
-                    <TouchableOpacity
-                        key={user.id}
-                        style={styles.message}
-                        onPress={() => setSelectedUserId(user.userId)}
-                    >
-                        <Text>{user.name_surname}</Text>
-                    </TouchableOpacity>
-                ))}
-            </View>
-
-            <PrivateMessege userId={selectedUserId} messages={messages} onAddMessage={AddMessage} />
-        </View>
-    );
-}
-
-function PrivateMessege({ userId, messages, onAddMessage }) {
-    const [inputMessage, setInputMessage] = useState(""); // Przechowuje wpisywany tekst
+    const { userData } = route.params;
+    const userId = userData.id;
 
     return (
-        <View style={styles.container1}>
-            <View style={styles.header}>
-                <Text style={styles.profileText}>Wiadomości dla użytkownika {userId}</Text>
-              
-            </View>
+        <View style={styles.chatContainer}>
 
             {/* Wyświetlanie wiadomości */}
             <View style={styles.messageContainer}>
-                {messages[userId]?.length > 0 ? (
-                    messages[userId].map((msg, index) => (
-                        <Text key={index} style={styles.messageText}>{msg}</Text>
-                    ))
-                ) : (
-                    <Text style={styles.noMessages}>Brak wiadomości</Text>
-                )}
+                <FlatList
+                    data={messages[userId]}
+                    keyExtractor={item => item.id}
+                    renderItem={({item}) => (
+                        <ChatMessage item={item}/>
+                    )}
+                    ListEmptyComponent={<Text style={styles.noMessages}>Brak wiadomości</Text>}
+                />
             </View>
 
             {/* Pole wpisywania i przycisk wysyłania */}
@@ -69,7 +89,7 @@ function PrivateMessege({ userId, messages, onAddMessage }) {
                     onChangeText={setInputMessage}
                 />
                 <TouchableOpacity onPress={() => {
-                    onAddMessage(userId, inputMessage);
+                    AddMessage(userId, inputMessage);
                     setInputMessage(""); // Czyści pole po wysłaniu
                 }}>
                     <Icon name="send" size={24} color="blue" />
@@ -79,32 +99,37 @@ function PrivateMessege({ userId, messages, onAddMessage }) {
     );
 }
 
+function ChatMessage({ item }) {
+    return (
+        <Text key={item.id} style={[styles.messageText, (item.isSent)?styles.sentMessageText:styles.receivedMessageText]}>{item.message}</Text>
+    );
+}
+
 const styles = StyleSheet.create({
-    container: {
+    listContainer: {
         flex: 1,
         padding: 20,
         backgroundColor: '#ffffff',
-        flexDirection: 'row'
+        flexDirection: 'column'
     },
-    container1: {
+    chatContainer: {
         flex: 1,
+        padding: 20,
         backgroundColor: '#ffffff',
-        borderWidth: 5,
-        borderColor: 'green',
-        flexDirection: 'column',
-        padding: 10
+        flexDirection: 'column'
     },
-    message: {
-        flex: 1,
-        backgroundColor: '#e0e0e0',
+    userListItem: {
+        backgroundColor: '#b3d89c',
         borderRadius: 8,
-        maxWidth: '100%',
-        maxHeight: '10%',
+        width: '100%',
         flexDirection: 'column',
-        borderColor: 'blue',
-        borderWidth: 1,
         padding: 10,
-        marginBottom: 5
+        marginBottom: 10,
+        fontSize: 20,
+        fontWeight: 'bold'
+    },
+    userListItemText: {
+        fontSize: 16,
     },
     header: {
         flexDirection: 'row',
@@ -115,6 +140,19 @@ const styles = StyleSheet.create({
     messageText: {
         fontSize: 16,
         color: '#333',
+        padding: 10,
+        marginBottom: 10,
+        borderRadius: 8,
+    },
+    sentMessageText: {
+        backgroundColor: '#b3d89c',
+        borderBottomRightRadius: 0,
+        alignSelf: 'flex-end'
+    },
+    receivedMessageText: {
+        backgroundColor: '#ddd',
+        borderBottomLeftRadius: 0,
+        alignSelf: 'flex-start'
     },
     messageContainer: {
         flex: 1,
