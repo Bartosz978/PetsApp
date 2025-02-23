@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Loadmessege } from './Load';  // Import funkcji do ładowania wiadomości
+import { loadMessage } from './Load';  // Import funkcji do ładowania wiadomości
 
 // Stałe globalne
 export const MY_ID = 1;
@@ -21,7 +21,7 @@ export function useLoadMessages(status) {
   useEffect(() => {
     async function fetchMessages() {
       try {
-        const loadedMessages = await Loadmessege(status);
+        const loadedMessages = await loadMessage(status);
         console.log("📥 Nowe wiadomości:", loadedMessages);
 
         if (loadedMessages) {

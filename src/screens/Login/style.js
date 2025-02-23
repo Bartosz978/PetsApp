@@ -24,11 +24,28 @@ export const styles = StyleSheet.create({
         backgroundColor: '#fff',
       },
       buttonBlock: {
-        width: '100%',
-        marginTop: 20,
+        width: '100%'
       },
-      bigButton: {
-        margin: 10,
+      buttonHolder: {
+        padding: 10,
+        marginTop: 20
+      },
+      logInButton: {
+        textAlign: 'center',
+        backgroundColor: 'green',
+        color: 'white',
+        fontSize: 20,
+      },
+      signInButton: {
+        textAlign: 'center',
+        backgroundColor: 'red',
+        color: 'white',
+        fontSize: 15
+      },
+      buttonText: {
+        color: 'white',
+        textAlign: 'center',
+        fontSize: 20
       }
     }
     );

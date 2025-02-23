@@ -1,32 +1,32 @@
 import { addUser, getUsers, updateUser } from '../Network/Network';
 import { ReadData, saveData } from '../LocalStorage/AsyncStorage/AsyncStorage';
-import {OgloszeniaCale,useUsers,Users,MesegeUsers,MY_ID, Status} from './DaneGlobalne';
+import {OgloszeniaCale,useUsers,Users,MesegeUsers as messageUsers,MY_ID, Status} from './DaneGlobalne';
 
 
 let OgloszeniaData = [];
 
-const LocalStatusWia = {
-    statuswiadomosci: 0,
-    statuswiadomosciKey: 'my-key-status-Wiado',
+const localStatusWiadomosci = {
+    statusWiadomosci: 0,
+    statusWiadomosciKey: 'my-key-status-Wiado',
 };
 
-const LocalStatusOglo = {
-    statusogloszen: 0,
-    statusogloszenKey: 'my-key-status-Oglo',
-    Ogloszeniafile: 'Ogloszenia'
+const localStatusOgloszen = {
+    statusOgloszen: 0,
+    statusOgloszenKey: 'my-key-status-Oglo',
+    ogloszeniaFile: 'Ogloszenia'
 };
 
-export async function LoadStaus() {
+export async function loadStatus() {
     try {
         // 1️⃣ Pobierz status ogłoszeń z lokalnej bazy
-        LocalStatusOglo.statusogloszen = await ReadData(LocalStatusOglo.statusogloszenKey) || 0;
+        localStatusOgloszen.statusOgloszen = await ReadData(localStatusOgloszen.statusOgloszenKey) || 0;
 
         // 2️⃣ Pobierz status ogłoszeń z serwera
         const statuserw = await getUsers('statusfirst'); 
         const statusSerwera = parseInt(statuserw.add, 10); // Konwersja do liczby
 
         // 3️⃣ Sprawdź, gdzie jest więcej ogłoszeń
-        if (LocalStatusOglo.statusogloszen-100 < statusSerwera) {
+        if (localStatusOgloszen.statusOgloszen-100 < statusSerwera) {
             console.log('📡 Pobieram nowe ogłoszenia z serwera...');
              OgloszeniaData = await getUsers('getAllOgloszenia'); 
             // Nadpisz dane w lokalnej bazie
@@ -34,11 +34,11 @@ export async function LoadStaus() {
             OgloszeniaCale.push(...OgloszeniaData);
           
 
-            await saveData(LocalStatusOglo.Ogloszeniafile, OgloszeniaData);
-            await saveData(LocalStatusOglo.statusogloszenKey, statusSerwera);
+            await saveData(localStatusOgloszen.ogloszeniaFile, OgloszeniaData);
+            await saveData(localStatusOgloszen.statusOgloszenKey, statusSerwera);
         } else {
             console.log('📁 Używam lokalnych ogłoszeń...');
-            const lokalneDane = await ReadData(LocalStatusOglo.statusogloszenKey);
+            const lokalneDane = await ReadData(localStatusOgloszen.statusOgloszenKey);
             OgloszeniaCale.length = 0; 
             OgloszeniaCale.push(...lokalneDane);      
 
@@ -46,13 +46,13 @@ export async function LoadStaus() {
         }
 
         // 4️⃣ Pobierz status wiadomości
-        LocalStatusWia.statuswiadomosci = await ReadData(LocalStatusWia.statuswiadomosciKey) || 0;
+        localStatusWiadomosci.statusWiadomosci = await ReadData(localStatusWiadomosci.statusWiadomosciKey) || 0;
     } catch (error) {
         console.error('❌ Błąd w LoadStaus:', error);
     }
 }
 
-export async function LoadUser(IdUser) {
+export async function loadUser(IdUser) {
     console.log(`Pobieram użytkownika o ID: ${IdUser}`);
     
     // Sprawdzamy, czy użytkownik istnieje w globalnej tablicy `Users`
@@ -75,23 +75,23 @@ export async function LoadUser(IdUser) {
 }
 
 
-function WriteStatus() {
+function writeStatus() {
 
 }
 
-export async function Loadmessege(body) {
+export async function loadMessage(body) {
     try {
-        const messege = await addUser(body, "regularquest");
-        if (messege === true) {
-            const newMessegebefore = await getUsers(`messegeuser/${MY_ID}`);
+        const message = await addUser(body, "regularquest");
+        if (message === true) {
+            const newMessageBefore = await getUsers(`messegeuser/${MY_ID}`);
            // const newMessege = JSON.stringify(newMessegebefore,null,2);
 
-            if (newMessegebefore) {
-                //MesegeUsers.length = 0; // Czyści tablicę, ale zachowuje referencję
-                MesegeUsers.push(...newMessegebefore); // Dodaje nowe wiadomości
+            if (newMessageBefore) {
+                //messageUsers.length = 0; // Czyści tablicę, ale zachowuje referencję
+                messageUsers.push(...newMessageBefore); // Dodaje nowe wiadomości
                      //     console.log("Pobrano WIADOMOŚCI:", MesegeUsers);
      
-             return MesegeUsers;
+             return messageUsers;
             } else {
                 console.error("Błąd: newMessege nic  noewgo.");
             }
@@ -102,14 +102,14 @@ export async function Loadmessege(body) {
     return null;
 }
 
-function loadUserMessege() {
+function loadUserMessage() {
     
 }
 
 
 
-export function giveNewogloszenie (Ogloszenie) {
-    console.log(Ogloszenie);
+export function giveNewOgloszenie (ogloszenie) {
+    console.log(ogloszenie);
 }
 
 // Funkcja do dodawania nowego użytkownika

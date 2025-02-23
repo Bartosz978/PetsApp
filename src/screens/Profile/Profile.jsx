@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { View, Text, Image, StyleSheet, FlatList, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome } from "@expo/vector-icons";
-import { LoadUser } from '../../Utlils/Load';  // Importujemy funkcję LoadUser
+import { loadUser } from '../../Utlils/Load';  // Importujemy funkcję LoadUser
 import { useRoute } from '@react-navigation/native';
 import { Users,OgloszeniaCale } from '../../Utlils/DaneGlobalne';  // Importujemy globalny obiekt Users
 import {styles} from './style';
@@ -19,7 +19,7 @@ export function UserProfile() {
     // Hook do pobierania danych użytkownika
     useEffect(() => {
         const fetchData = async () => {
-            const userData = await LoadUser(id);  // Asynchroniczne pobieranie danych
+            const userData = await loadUser(id);  // Asynchroniczne pobieranie danych
             setUser(userData);  // Ustawiamy dane użytkownika w stanie
         };
 

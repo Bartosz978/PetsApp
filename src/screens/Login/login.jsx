@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, Alert, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, Alert, Image, Touchable, TouchableOpacity } from 'react-native';
 import { storeCredentials, getStoredCredentials } from '../../Utlils/authUtils';
 import { styles } from './style';
-import { LoadStaus } from '../../Utlils/Load';
+import { loadStatus } from '../../Utlils/Load';
 
 export function MenuScreen({ navigation }) {
   const [credentials, setCredentials] = useState({
@@ -11,7 +11,7 @@ export function MenuScreen({ navigation }) {
   });
 
   const handleLogin = async () => {
-    LoadStaus();
+    loadStatus();
     try {
       const response = await fetch('http://10.0.2.2:3000/users/login', {
         method: 'POST',
@@ -24,7 +24,7 @@ export function MenuScreen({ navigation }) {
       const data = await response.json();
 
       if (data.success) {
-        
+
 
         // Store credentials securely
         const stored = await storeCredentials(credentials.username, credentials.password);
@@ -40,12 +40,14 @@ export function MenuScreen({ navigation }) {
       console.error('Login error:', error);
       Alert.alert('Error', 'Failed to login. Please try again.');
     }
-    
+
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+      <Image style={styles.image} source={require('../../../assets/1.png')}/>
+
+      {/* <Text style={styles.title}>Login</Text> */}
 
       <TextInput
         style={styles.input}
@@ -64,12 +66,17 @@ export function MenuScreen({ navigation }) {
         autoCapitalize="none"
       />
 
-      <Button title="Login" onPress={handleLogin} />
-      
-      <Button 
-        title="Create Account" 
-        onPress={() => navigation.navigate('SignIn')} 
-      />
+      <View style={styles.buttonBlock}>
+
+        <TouchableOpacity style={[styles.buttonHolder, styles.logInButton]} onPress={handleLogin}>
+          <Text style={styles.buttonText}> Login </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={[styles.buttonHolder, styles.signInButton]} onPress={() => navigation.navigate('SignIn')}>
+          <Text style={styles.buttonText}> Create Account </Text>
+        </TouchableOpacity>
+
+      </View>
     </View>
   );
 }

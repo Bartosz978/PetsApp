@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import * as Location from 'expo-location'; // Dodajemy expo-location
-import { giveNewogloszenie } from '../../Utlils/Load'; // import funkcji do dodawania ogłoszenia
+import { giveNewOgloszenie } from '../../Utlils/Load'; // import funkcji do dodawania ogłoszenia
 import {styles} from './style'; 
 
 export  function AddAnnouncementScreen() {
@@ -78,7 +78,7 @@ export  function AddAnnouncementScreen() {
     };
 
     // Wywołanie funkcji z Load.js do dodania ogłoszenia
-    const response = await giveNewogloszenie(newAnnouncement);
+    const response = await giveNewOgloszenie(newAnnouncement);
     if (response) {
       Alert.alert('Sukces', 'Ogłoszenie zostało dodane!');
     } else {

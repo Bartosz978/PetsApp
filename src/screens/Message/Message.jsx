@@ -3,7 +3,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 //import { OgloszeniaCale, useUsers, Users, MesegeUsers, MY_ID, Status, useLoadMessages } from './DaneGlobalne';
-import { Loadmessege, LoadUser } from '../../Utlils/Load';
+import { loadMessage, loadUser } from '../../Utlils/Load';
 import {styles} from './style';
 
 const MessageStack = createNativeStackNavigator();
@@ -39,7 +39,7 @@ function MessageUserList({ navigation }) {
         let isMounted = true; // Flaga do kontrolowania unmountu
 
         const fetchUserData = async () => {
-            const UsersDataPromises = userIds.map(user => LoadUser(user));
+            const UsersDataPromises = userIds.map(user => loadUser(user));
             const usersData = await Promise.all(UsersDataPromises);
 
             if (isMounted) {
