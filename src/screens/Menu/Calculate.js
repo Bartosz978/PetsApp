@@ -1,5 +1,5 @@
 export const calculateDistance = (lat1, lon1, lat2, lon2) => {
-    if (!lat1 || !lon1 || !lat2 || !lon2) return 0;
+    if (!lat1 || !lon1 || !lat2 || !lon2) return "0";
   
     const toRad = (value) => (value * Math.PI) / 180;
     const R = 6371; // Promień Ziemi w km
