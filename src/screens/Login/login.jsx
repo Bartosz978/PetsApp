@@ -11,6 +11,7 @@ export function MenuScreen({ navigation }) {
   });
 
   const handleLogin = async () => {
+    LoadStaus();
     try {
       const response = await fetch('http://10.0.2.2:3000/users/login', {
         method: 'POST',
@@ -23,6 +24,8 @@ export function MenuScreen({ navigation }) {
       const data = await response.json();
 
       if (data.success) {
+        
+
         // Store credentials securely
         const stored = await storeCredentials(credentials.username, credentials.password);
         if (!stored) {
@@ -37,7 +40,7 @@ export function MenuScreen({ navigation }) {
       console.error('Login error:', error);
       Alert.alert('Error', 'Failed to login. Please try again.');
     }
-    LoadStaus();
+    
   };
 
   return (

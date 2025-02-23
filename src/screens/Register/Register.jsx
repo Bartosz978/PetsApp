@@ -42,7 +42,7 @@ export function SignUpScreen({ navigation }) {
   };
 
   const handleSignUp = async () => {
-    if (!userData.username || !userData.password || !userData.name) {
+    if (!userData.username || !userData.password || !userData.name || !userData.address || !userData.phone   ) {
       Alert.alert('Error', 'Please fill in all required fields');
       return;
     }

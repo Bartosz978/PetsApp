@@ -26,7 +26,7 @@ export async function LoadStaus() {
         const statusSerwera = parseInt(statuserw.add, 10); // Konwersja do liczby
 
         // 3️⃣ Sprawdź, gdzie jest więcej ogłoszeń
-        if (LocalStatusOglo.statusogloszen-3 < statusSerwera) {
+        if (LocalStatusOglo.statusogloszen-100 < statusSerwera) {
             console.log('📡 Pobieram nowe ogłoszenia z serwera...');
              OgloszeniaData = await getUsers('getAllOgloszenia'); 
             // Nadpisz dane w lokalnej bazie
