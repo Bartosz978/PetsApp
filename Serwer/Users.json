@@ -1,0 +1,81 @@
+[
+  {
+    "id": "1",
+    "name": "Bartosz Kaczmarczyk",
+    "address": "ul. Warszawska 10, Kraków",
+    "phone": "+48 600 123 456",
+    "avatar": "https://randomuser.me/api/portraits/men/1.jpg"
+  },
+  {
+    "id": "2",
+    "name": "Anna Nowak",
+    "address": "ul. Główna 5, Warszawa",
+    "phone": "+48 601 987 654",
+    "avatar": "https://randomuser.me/api/portraits/women/2.jpg"
+  },
+  {
+    "id": "3",
+    "name": "Michał Kowalski",
+    "address": "ul. Długa 20, Wrocław",
+    "phone": "+48 602 555 333",
+    "avatar": "https://randomuser.me/api/portraits/men/3.jpg"
+  },
+  {
+    "id": "4",
+    "name": "Katarzyna Wiśniewska",
+    "address": "ul. Szeroka 15, Poznań",
+    "phone": "+48 603 444 222",
+    "avatar": "https://randomuser.me/api/portraits/women/4.jpg"
+  },
+  {
+    "id": "5",
+    "name": "Jakub Nowakowski",
+    "address": "ul. Mickiewicza 10, Gdańsk",
+    "phone": "+48 604 123 987",
+    "avatar": "https://randomuser.me/api/portraits/men/5.jpg"
+  },
+  {
+    "id": "6",
+    "name": "Monika Zielińska",
+    "address": "ul. Krótka 25, Łódź",
+    "phone": "+48 605 765 432",
+    "avatar": "https://randomuser.me/api/portraits/women/6.jpg"
+  },
+  {
+    "id": "7",
+    "name": "Tomasz Adamczyk",
+    "address": "ul. Śląska 40, Katowice",
+    "phone": "+48 606 789 123",
+    "avatar": "https://randomuser.me/api/portraits/men/7.jpg"
+  },
+  {
+    "id": "8",
+    "name": "Ewa Kowalczyk",
+    "address": "ul. Warszawska 8, Rzeszów",
+    "phone": "+48 607 321 654",
+    "avatar": "https://randomuser.me/api/portraits/women/8.jpg"
+  },
+  {
+    "id": "9",
+    "name": "Paweł Zieliński",
+    "address": "ul. Polna 30, Lublin",
+    "phone": "+48 608 987 321",
+    "avatar": "https://randomuser.me/api/portraits/men/9.jpg"
+  },
+  {
+    "id": "10",
+    "name": "Agata Wiśniewska",
+    "address": "ul. Wrocławska 12, Gdynia",
+    "phone": "+48 609 654 987",
+    "avatar": "https://randomuser.me/api/portraits/women/10.jpg"
+  },
+  {
+    "id": "11",
+    "username": "a",
+    "password": "a",
+    "name": "a",
+    "address": "a",
+    "phone": "a",
+    "createdAt": "2025-02-23T14:11:27.009Z"
+  }
+]

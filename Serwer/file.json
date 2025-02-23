@@ -1,0 +1,180 @@
+{
+    "projects": [
+    {
+    "id": 1,
+    "title": "Projekt A",
+    "description": "Realizacja nowego systemu zarządzania zasobami",
+    "status": "W trakcie",
+    "progress": 75, 
+    "startDate": "2025-03-01T09:00:00Z",
+    "endDate": null,
+    "meetings": [
+    {
+    "id": 1,
+    "title": "Spotkanie inauguracyjne",
+    "date": "2025-03-10T10:00:00Z",
+    "location": "Sala konferencyjna A",
+    "agenda": "Omówienie planu projektu",
+    "attendees": [1, 2, 3] 
+    },
+    {
+    "id": 2,
+    "title": "Przegląd postępów",
+    "date": "2025-03-17T14:00:00Z",
+    "location": "Sala konferencyjna B",
+    "agenda": "Analiza bieżących zadań i problemów",
+    "attendees": [1, 2, 3]
+    }
+    ],
+    "teamMembers": [
+    {
+    "id": 1,
+    "userId": 1,
+    "role": "Kierownik projektu",
+    "joinedAt": "2025-03-01T09:00:00Z"
+    },
+    {
+    "id": 2,
+    "userId": 2,
+    "role": "Programista",
+    "joinedAt": "2025-03-02T10:00:00Z"
+    }
+    ],
+    "tasks": [
+    {
+    "id": 1,
+    "title": "Analiza wymagań",
+    "description": "Zebranie i analiza wymagań od klienta",
+    "status": "Zakończona", 
+    "assignedTo": 2, 
+    "deadline": "2025-03-05T17:00:00Z",
+    "comments": [
+    {
+    "id": 1,
+    "userId": 1,
+    "content": "Wszystkie wymagania zebrane, proszę o weryfikację.",
+    "createdAt": "2025-03-04T12:00:00Z"
+    }
+    ]
+    },
+    {
+    "id": 2,
+    "title": "Projektowanie systemu",
+    "description": "Opracowanie architektury systemu",
+    "status": "W trakcie",
+    "assignedTo": 2,
+    "deadline": "2025-03-20T17:00:00Z",
+    "comments": []
+    }
+    ],
+    "attachments": [
+    {
+    "id": 1,
+    "fileName": "specyfikacja.pdf",
+    "url": "https://example.com/files/specyfikacja.pdf",
+    "uploadedBy": 1,
+    "uploadedAt": "2025-03-03T09:00:00Z"
+    }
+    ],
+    "activityLogs": [
+    {
+    "id": 1,
+    "userId": 1,
+    "action": "Utworzył projekt",
+    "timestamp": "2025-03-01T09:00:00Z"
+    },
+    {
+    "id": 2,
+    "userId": 2,
+    "action": "Dodał zadanie 'Analiza wymagań'",
+    "timestamp": "2025-03-04T11:00:00Z"
+    }
+    ],
+    "discussions": [
+    {
+    "id": 1,
+    "topic": "Wybór technologii",
+    "messages": [
+    {
+    "id": 1,
+    "userId": 1,
+    "content": "Proponuję rozważyć Node.js.",
+    "createdAt": "2025-03-02T10:00:00Z"
+    },
+    {
+    "id": 2,
+    "userId": 2,
+    "content": "Zgadzam się, ale warto też przyjrzeć się Pythonowi.",
+    "createdAt": "2025-03-02T10:05:00Z"
+    }
+    ]
+    }
+    ]
+    }
+    ],
+    "notes": [
+    {
+    "id": 1,
+    "projectId": 1,
+    "content": "Zaczęto prace nad architekturą systemu.",
+    "createdAt": "2025-03-10T11:00:00Z",
+    "updatedAt": "2025-03-10T11:00:00Z"
+    },
+    {
+    "id": 2,
+    "projectId": 1,
+    "content": "Ustalono pierwsze wymagania funkcjonalne.",
+    "createdAt": "2025-03-11T09:30:00Z",
+    "updatedAt": "2025-03-11T09:30:00Z"
+    }
+    ],
+    "users": [
+    {
+    "id": 1,
+    "name": "Jan Nowak",
+    "email": "jan.nowak@example.com",
+    "avatar": "https://example.com/avatars/jan.png",
+    "role": "Administrator"
+    },
+    {
+    "id": 2,
+    "name": "Anna Kowalska",
+    "email": "anna.kowalska@example.com",
+    "avatar": "https://example.com/avatars/anna.png",
+    "role": "Użytkownik"
+    },
+    {
+    "id": 3,
+    "name": "Piotr Wiśniewski",
+    "email": "piotr.wisniewski@example.com",
+    "avatar": "https://example.com/avatars/piotr.png",
+    "role": "Użytkownik"
+    }
+    ],
+    "notifications": [
+    {
+    "id": 1,
+    "userId": 1,
+    "message": "Nowe zadanie przypisane do Ciebie: 'Projektowanie systemu'",
+    "read": false,
+    "createdAt": "2025-03-04T11:30:00Z"
+    },
+    {
+    "id": 2,
+    "userId": 2,
+    "message": "Zbliża się termin realizacji zadania 'Analiza wymagań'",
+    "read": false,
+    "createdAt": "2025-03-04T12:00:00Z"
+    }
+    ],
+    "userPreferences": {
+    "theme": "light", 
+    "viewMode": "list" 
+    },
+    "statistics": {
+    "totalProjects": 1,
+    "completedProjects": 0,
+    "pendingProjects": 1,
+    "averageProgress": 75
+    }
+    }

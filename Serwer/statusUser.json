@@ -1,0 +1,53 @@
+[
+    {
+      "id_status_uzytkownika": 1,
+      "count_wiadomosciUser": 15,
+      "count_nowcyh_wiadomosci": 3
+    },
+    {
+      "id_status_uzytkownika": 2,
+      "count_wiadomosciUser": 5,
+      "count_nowcyh_wiadomosci": 0
+    },
+    {
+      "id_status_uzytkownika": 3,
+      "count_wiadomosciUser": 8,
+      "count_nowcyh_wiadomosci": 2
+    },
+    {
+      "id_status_uzytkownika": 4,
+      "count_wiadomosciUser": 10,
+      "count_nowcyh_wiadomosci": 4
+    },
+    {
+      "id_status_uzytkownika": 5,
+      "count_wiadomosciUser": 0,
+      "count_nowcyh_wiadomosci": 0
+    },
+    {
+      "id_status_uzytkownika": 6,
+      "count_wiadomosciUser": 23,
+      "count_nowcyh_wiadomosci": 1
+    },
+    {
+      "id_status_uzytkownika": 7,
+      "count_wiadomosciUser": 18,
+      "count_nowcyh_wiadomosci": 5
+    },
+    {
+      "id_status_uzytkownika": 8,
+      "count_wiadomosciUser": 12,
+      "count_nowcyh_wiadomosci": 0
+    },
+    {
+      "id_status_uzytkownika": 9,
+      "count_wiadomosciUser": 9,
+      "count_nowcyh_wiadomosci": 3
+    },
+    {
+      "id_status_uzytkownika": 10,
+      "count_wiadomosciUser": 17,
+      "count_nowcyh_wiadomosci": 6
+    }
+  ]
+  

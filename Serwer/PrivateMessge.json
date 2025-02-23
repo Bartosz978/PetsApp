@@ -1,0 +1,102 @@
+[
+    {
+      "id_prywatnej_wiadomosci": 1,
+      "id_users_1": 1,
+      "id_users_2": 2,
+      "wiadomosci": [
+        { "id_usera": 1, "tresc": "Hej, co tam?" },
+        { "id_usera": 2, "tresc": "Siema! Wszystko w porządku." }
+      ]
+    },
+    {
+      "id_prywatnej_wiadomosci": 2,
+      "id_users_1": 3,
+      "id_users_2": 4,
+      "wiadomosci": [
+        { "id_usera": 3, "tresc": "Masz chwilę pogadać?" },
+        { "id_usera": 4, "tresc": "Tak, jasne. O co chodzi?" }
+      ]
+    },
+    {
+      "id_prywatnej_wiadomosci": 3,
+      "id_users_1": 5,
+      "id_users_2": 6,
+      "wiadomosci": [
+        { "id_usera": 5, "tresc": "Kiedy się widzimy?" },
+        { "id_usera": 6, "tresc": "Może w piątek wieczorem?" }
+      ]
+    },
+    {
+      "id_prywatnej_wiadomosci": 4,
+      "id_users_1": 7,
+      "id_users_2": 8,
+      "wiadomosci": [
+        { "id_usera": 7, "tresc": "Dostałeś moje notatki?" },
+        { "id_usera": 8, "tresc": "Tak, dzięki! Przydadzą się." }
+      ]
+    },
+    {
+      "id_prywatnej_wiadomosci": 5,
+      "id_users_1": 9,
+      "id_users_2": 10,
+      "wiadomosci": [
+        { "id_usera": 9, "tresc": "Widziałeś ten nowy serial?" },
+        { "id_usera": 10, "tresc": "Tak, całkiem niezły!" }
+      ]
+    },
+    {
+      "id_prywatnej_wiadomosci": 6,
+      "id_users_1": 2,
+      "id_users_2": 5,
+      "wiadomosci": [
+        { "id_usera": 2, "tresc": "Idziesz na siłownię dzisiaj?" },
+        { "id_usera": 5, "tresc": "Nie wiem jeszcze, dam znać!" }
+      ]
+    },
+    {
+      "id_prywatnej_wiadomosci": 7,
+      "id_users_1": 4,
+      "id_users_2": 7,
+      "wiadomosci": [
+        { "id_usera": 4, "tresc": "Jak tam w pracy?" },
+        { "id_usera": 7, "tresc": "Spoko, trochę roboty ale idzie dobrze." }
+      ]
+    },
+    {
+      "id_prywatnej_wiadomosci": 8,
+      "id_users_1": 6,
+      "id_users_2": 9,
+      "wiadomosci": [
+        { "id_usera": 6, "tresc": "Kupiłeś już bilet na koncert?" },
+        { "id_usera": 9, "tresc": "Jeszcze nie, muszę to ogarnąć!" }
+      ]
+    },
+    {
+      "id_prywatnej_wiadomosci": 9,
+      "id_users_1": 8,
+      "id_users_2": 3,
+      "wiadomosci": [
+        { "id_usera": 8, "tresc": "Masz może książkę, którą ci pożyczyłem?" },
+        { "id_usera": 3, "tresc": "Tak, oddam ci w weekend!" }
+      ]
+    },
+    {
+      "id_prywatnej_wiadomosci": 10,
+      "id_users_1": 10,
+      "id_users_2": 1,
+      "wiadomosci": [
+        { "id_usera": 10, "tresc": "Chcesz pograć wieczorem?" },
+        { "id_usera": 1, "tresc": "Pewnie, o której?" }
+      ]
+    },
+    {
+      "id_prywatnej_wiadomosci": 11,
+      "id_users_1": 5,
+      "id_users_2": 1,
+      "wiadomosci": [
+        { "id_usera": 10, "tresc": "Chcesz pograć wieczorem?" },
+        { "id_usera": 1, "tresc": "Pewnie, o której?" }
+      ]
+    }
+  ]
+  
