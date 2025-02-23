@@ -24,7 +24,8 @@ describe('Distance calculations', () => {
 
     it('Changing order does not affect distance', () => {
         const r = calculateDistance(1.3521, 103.8198, -6.2000, 106.8167);
-        expect(r).toEqual("903.26")
+        const b = calculateDistance(-6.2000, 106.8167, 1.3521, 103.8198);
+        expect(r).toEqual(b)
     })
 
 })
