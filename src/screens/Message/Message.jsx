@@ -2,9 +2,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { useState, useEffect, useMemo } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-//import { OgloszeniaCale, useUsers, Users, MesegeUsers, MY_ID, Status, useLoadMessages } from './DaneGlobalne';
 import { loadMessage, loadUser } from '../../Utlils/Load';
-import {styles} from './style';
+import { styles } from './style';
+import { MessageUsers, Status, useLoadMessages } from '../../Utlils/DaneGlobalne';
 
 const MessageStack = createNativeStackNavigator();
 
@@ -18,22 +18,22 @@ export function Message() {
 }
 
 function MessageUserList({ navigation }) {
-    const importnatMessge = useLoadMessages(Status);
+    const importantMessage = useLoadMessages(Status);
 
     // Znalezienie rozmów użytkownika
-    const userConversations = useMemo(() => 
-        MesegeUsers.filter(conv => conv.id_users_1 === MY_ID || conv.id_users_2 === MY_ID), 
+    const userConversations = useMemo(() =>
+        MessageUsers.filter(conv => conv.id_users_1 === MY_ID || conv.id_users_2 === MY_ID),
         []
     );
 
     // Pobranie ID rozmówców
-    const userIds = useMemo(() => 
-        userConversations.map(conv => conv.id_users_1 === MY_ID ? conv.id_users_2 : conv.id_users_1), 
+    const userIds = useMemo(() =>
+        userConversations.map(conv => conv.id_users_1 === MY_ID ? conv.id_users_2 : conv.id_users_1),
         [userConversations]
     );
 
     // Pobieranie użytkowników (tylko raz)
-    const [UsersData, setUsersData] = useState([]);
+    const [usersData, setUsersData] = useState([]);
 
     useEffect(() => {
         let isMounted = true; // Flaga do kontrolowania unmountu
@@ -48,18 +48,18 @@ function MessageUserList({ navigation }) {
         };
 
         fetchUserData();
-        
+
         return () => { isMounted = false }; // Cleanup effect
 
     }, [userIds]);
 
     return (
         <View style={styles.listContainer}>
-            {UsersData.length === 0 ? (
+            {usersData.length === 0 ? (
                 <Text>Ładowanie danych użytkowników...</Text>
             ) : (
                 <FlatList
-                    data={UsersData}
+                    data={usersData}
                     keyExtractor={item => item.id.toString()}
                     renderItem={({ item }) => (
                         <UserListElement item={item} navigation={navigation} />
@@ -88,8 +88,8 @@ function MessageChat({ route }) {
     const userId = useMemo(() => userData.id, [userData]); // Zapamiętanie userId
 
     // Znalezienie rozmowy użytkownika
-    const conversation = useMemo(() => 
-        MesegeUsers.find(conv => (conv.id_users_1 === userId || conv.id_users_2 === userId)), 
+    const conversation = useMemo(() =>
+        MessageUsers.find(conv => (conv.id_users_1 === userId || conv.id_users_2 === userId)),
         [userId]
     );
 

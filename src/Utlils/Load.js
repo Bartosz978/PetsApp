@@ -1,6 +1,6 @@
 import { addUser, getUsers, updateUser } from '../Network/Network';
 import { ReadData, saveData } from '../LocalStorage/AsyncStorage/AsyncStorage';
-import {OgloszeniaCale,useUsers,Users,MesegeUsers as messageUsers,MY_ID, Status} from './DaneGlobalne';
+import {OgloszeniaCale,useUsers,Users,MessageUsers as messageUsers,MY_ID, Status} from './DaneGlobalne';
 
 
 let OgloszeniaData = [];

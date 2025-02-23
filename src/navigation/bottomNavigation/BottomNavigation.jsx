@@ -18,6 +18,8 @@ export function BottomNavigation() {
 
                 <Bottom.Screen name='Dodaj Ogłoszenie' component={AddAnnouncementScreen} options={{ title: "Dodaj Ogłoszenie" }} />
                 
+                <Bottom.Screen name='Messages' component={Message} options={{ title: 'Wiadomości' }} />
+
                 <Bottom.Screen name='Setting' component={Settings} options={{ title: "Ustawienia" }} />
 
             </Bottom.Navigator>

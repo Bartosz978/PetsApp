@@ -5,13 +5,13 @@ import { loadMessage } from './Load';  // Import funkcji do ładowania wiadomoś
 export const MY_ID = 1;
 export const OgloszeniaCale = [];  // Przykładowa tablica ogłoszeń
 export const Users = [];           // Tablica użytkowników
-export const MesegeUsers = []; 
-export const Id_MyUser  = []    // Tablica wiadomości
+export const MessageUsers = [];
+export const Id_MyUser = []    // Tablica wiadomości
 
 export const Status = {
   id_status_uzytkownika: MY_ID,
   count_wiadomosciUser: 0,
-  count_nowcyh_wiadomosci: 0,
+  count_nowych_wiadomosci: 0,
 };
 
 // Hook do ładowania wiadomości
